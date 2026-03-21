@@ -194,10 +194,10 @@
 
         .nav-menu a {
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             color: #2c5e2c;
-            font-size: 0.9rem;
-            padding: 4px 0;
+            font-size: 1.15rem;          
+            padding: 6px 0;            
             border-bottom: 2px solid transparent;
             transition: border-color var(--transition);
         }
