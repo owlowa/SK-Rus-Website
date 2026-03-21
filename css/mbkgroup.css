@@ -202,7 +202,6 @@ h1, h2, h3, h4 {
             border-bottom: 2px solid transparent;
             transition: border-color var(--transition);
         }
-}
 .nav-menu a:hover {
     border-bottom-color: var(--accent);
     color: var(--accent-dark);
@@ -730,26 +729,34 @@ h1, h2, h3, h4 {
     color: var(--accent-light);
 }
 
-.footer-telegram {
+.footer .footer-social {
     text-align: center;
-    margin-top: 8px;
+    margin-top: 20px;
 }
-.footer-telegram a {
-    display: inline-flex;
+.footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.footer .social-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--accent-bg);
+    border: 1px solid var(--border-brown);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    background: #1b5e20;
-    color: white;
-    padding: 8px 20px;
-    border-radius: var(--border-radius-btn);
-    text-decoration: none;
-    font-weight: 500;
-    border: 1px solid var(--primary-light);
-    transition: all var(--transition);
+    justify-content: center;
+    transition: all 0.2s;
 }
-.footer-telegram a:hover {
-    background: var(--accent);
-    border-color: var(--white);
+.footer .social-icon:hover {
+    background: var(--primary-light);
+    transform: scale(1.05);
+}
+.footer .social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary-dark);
 }
 
 hr {
