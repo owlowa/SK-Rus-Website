@@ -148,27 +148,26 @@
                                 <small>наличные, счет с НДС/без НДС</small>
                             </li>
                         </ul>
-                        <div class="delivery-note">
-                            <span>✅</span> Отгрузка на следующий день при 100% оплате
-                        </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Специальное предложение – яркий акцент -->
             <section class="special-offer">
                 <div class="offer-container">
                     <div class="offer-text">
-                        <div class="offer-badge">🔥 Специальное предложение до конца весны</div>
+                        <div class="offer-badge">СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</div>
+                        <div class="offer-subtitle">ДО КОНЦА весны</div>
                         <h2>Дом 6х6 с террасой 2х6</h2>
-                        <p>Сантехника и электрика в комплекте. Полная готовность к заселению!</p>
+                        <p class="offer-subtitle">Сантехника и электрика в комплекте. Полная готовность к заселению!</p>
                         <div class="price">Всего от 29 850 ₽/месяц</div>
                         <button class="offer-btn" onclick="openModal()">Узнать подробности</button>
                     </div>
                     <div class="offer-images">
-                        <div class="offer-img">
+                        <div class="offer-img gallery-thumb" data-src="photo/spec1.jpg">
                             <img src="photo/spec1.jpg" alt="Дом 6х6 с террасой">
                         </div>
-                        <div class="offer-img">
+                        <div class="offer-img gallery-thumb" data-src="photo/spec2.jpg">
                             <img src="photo/spec2.jpg" alt="Интерьер и сантехника">
                         </div>
                     </div>
@@ -252,6 +251,7 @@
         </div>
     </footer>
 
+    <!-- Модальное окно обратной связи -->
     <div class="modal-overlay" id="modalOverlay" hidden>
         <div class="modal">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -269,6 +269,51 @@
         </div>
     </div>
 
+    <!-- Модальное окно для изображений -->
+    <div class="image-modal-overlay" id="imageModalOverlay" hidden>
+        <div class="image-modal">
+            <button class="image-modal-close" id="closeImageModalBtn">&times;</button>
+            <img src="" alt="" id="modalImage">
+        </div>
+    </div>
+
     <script src="js/common.js"></script>
+     <script>
+        // Дополнительная инициализация для изображений в спецпредложении
+        (function() {
+            const imageModalOverlay = document.getElementById('imageModalOverlay');
+            const closeImageModalBtn = document.getElementById('closeImageModalBtn');
+            const modalImage = document.getElementById('modalImage');
+
+            function openImageModal(src) {
+                if (!imageModalOverlay) return;
+                modalImage.src = src;
+                imageModalOverlay.hidden = false;
+                document.body.style.overflow = 'hidden';
+                closeImageModalBtn?.focus();
+            }
+
+            function closeImageModal() {
+                if (!imageModalOverlay) return;
+                imageModalOverlay.hidden = true;
+                document.body.style.overflow = '';
+            }
+
+            // Находим все изображения в спецпредложении с классом gallery-thumb
+            document.querySelectorAll('.special-offer .gallery-thumb').forEach(thumb => {
+                thumb.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const src = this.dataset.src;
+                    if (src) openImageModal(src);
+                });
+            });
+
+            if (closeImageModalBtn) closeImageModalBtn.addEventListener('click', closeImageModal);
+            if (imageModalOverlay) {
+                imageModalOverlay.addEventListener('click', e => { if (e.target === imageModalOverlay) closeImageModal(); });
+                document.addEventListener('keydown', e => { if (!imageModalOverlay.hidden && e.key === 'Escape') closeImageModal(); });
+            }
+        })();
+    </script>
 </body>
 </html>
