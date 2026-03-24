@@ -56,6 +56,73 @@ h1, h2, h3, h4 {
     letter-spacing: -0.01em;
 }
 
+.top-banner {
+    background: #ffffff;
+    border-bottom: 1px solid #ffe0e0;
+    padding: 16px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #d32f2f;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    /* Пульсирующее свечение */
+    animation: pulseGlow 1s ease-in-out infinite;
+    text-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
+}
+
+/* Исходящая волна – псевдоэлемент с анимацией масштаба и прозрачности */
+.banner-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(211,47,47,0.3) 0%, rgba(211,47,47,0) 80%);
+    transform: translate(-50%, -50%) scale(0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: wavePulse 1.2s ease-out infinite;
+    z-index: -1;
+}
+
+/* Ключевые кадры для пульсирующего свечения */
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 0px rgba(211, 47, 47, 0);
+        opacity: 1;
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(211, 47, 47, 0.9), 0 0 5px rgba(211, 47, 47, 0.8);
+        opacity: 0.9;
+    }
+    100% {
+        text-shadow: 0 0 0px rgba(211, 47, 47, 0);
+        opacity: 1;
+    }
+}
+
+/* Исходящая волна – масштабирующийся круг */
+@keyframes wavePulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.2);
+        opacity: 0;
+    }
+}
+
 .section-title {
     font-size: clamp(1.5rem, 5vw, 2rem);
     margin: 40px 0 20px;
@@ -958,6 +1025,13 @@ hr {
 @media (min-width: 1024px) {
     .category-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-text {
+        font-size: 1.2rem;
+        padding: 0 10px;
     }
 }
 
