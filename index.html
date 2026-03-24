@@ -107,6 +107,33 @@
                     <div class="banner-text">РАБОТАЕМ БЕЗ ПРЕДОПЛАТЫ</div>
                 </div>
             </div>
+            <section class="payment-benefits">
+                <div class="container">
+                    <h2 class="section-title">Наши преимущества оплаты</h2>
+                    <div class="payment-grid">
+                        <div class="payment-card">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-title">Рассрочка</div>
+                            <div class="payment-desc">Без переплат</div>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon">💰</div>
+                            <div class="payment-title">Кредит</div>
+                            <div class="payment-desc">Быстрое решение</div>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon">🏠</div>
+                            <div class="payment-title">Ипотека</div>
+                            <div class="payment-desc">Выгодные ставки</div>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon">👶</div>
+                            <div class="payment-title">Материнский капитал</div>
+                            <div class="payment-desc">Помощь государства</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         <div class="container">
             <section aria-labelledby="categories-title">
@@ -342,6 +369,10 @@
                 document.addEventListener('keydown', e => { if (!imageModalOverlay.hidden && e.key === 'Escape') closeImageModal(); });
             }
         })();
+
+        (function() {
+        const wrapper = document.getElementById('scrollingWrapper');
+        if (!wrapper) return;
     </script>
 </body>
 </html>

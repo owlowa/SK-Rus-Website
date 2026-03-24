@@ -61,65 +61,109 @@ h1, h2, h3, h4 {
     border-bottom: 1px solid #ffe0e0;
     padding: 16px 0;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .banner-text {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #d32f2f;
     letter-spacing: 1px;
     text-transform: uppercase;
-    display: inline-block;
-    position: relative;
-    /* Пульсирующее свечение */
-    animation: pulseGlow 1s ease-in-out infinite;
-    text-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
 }
 
-/* Исходящая волна – псевдоэлемент с анимацией масштаба и прозрачности */
-.banner-text::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(211,47,47,0.3) 0%, rgba(211,47,47,0) 80%);
-    transform: translate(-50%, -50%) scale(0.8);
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .banner-text {
+        font-size: 1.4rem;
+        padding: 0 10px;
+    }
+}
+
+.payment-benefits {
+    margin: 40px 0 30px;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    text-align: center;
+}
+
+.payment-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border-light);
+}
+.payment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.payment-icon {
+    font-size: 2rem;
+    background: var(--accent-bg);
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
     border-radius: 50%;
-    pointer-events: none;
-    animation: wavePulse 1.2s ease-out infinite;
-    z-index: -1;
+    margin: 0 auto 12px;
+    color: var(--accent-dark);
+    text-align: center;
 }
 
-/* Ключевые кадры для пульсирующего свечения */
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 0px rgba(211, 47, 47, 0);
-        opacity: 1;
+.payment-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+.payment-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+    .payment-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
-    50% {
-        text-shadow: 0 0 15px rgba(211, 47, 47, 0.9), 0 0 5px rgba(211, 47, 47, 0.8);
-        opacity: 0.9;
+    .payment-title {
+        font-size: 1.2rem;
     }
-    100% {
-        text-shadow: 0 0 0px rgba(211, 47, 47, 0);
-        opacity: 1;
+    .payment-desc {
+        font-size: 0.85rem;
+    }
+    .payment-icon {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 1.8rem;
     }
 }
 
-/* Исходящая волна – масштабирующийся круг */
-@keyframes wavePulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.6);
-        opacity: 0.8;
+@media (max-width: 480px) {
+    .payment-grid {
+        grid-template-columns: 1fr;
     }
-    100% {
-        transform: translate(-50%, -50%) scale(2.2);
-        opacity: 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .plate-item {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+        gap: 12px;
+    }
+    .scrolling-wrapper {
+        gap: 12px;
+        animation-duration: 20s;
     }
 }
 
@@ -1031,7 +1075,12 @@ hr {
 @media (max-width: 768px) {
     .banner-text {
         font-size: 1.2rem;
-        padding: 0 10px;
+        animation: waveEffectMobile 1.5s ease-in-out infinite;
+    }
+    @keyframes waveEffectMobile {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.02); }
+        100% { transform: scale(1); }
     }
 }
 
