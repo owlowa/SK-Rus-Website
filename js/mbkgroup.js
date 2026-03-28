@@ -187,7 +187,7 @@
 
             const formData = new FormData(form);
             try {
-                const response = await fetch('send.php', { method: 'POST', body: formData });
+                const response = await fetch('mbksend.php', { method: 'POST', body: formData });
                 if (response.ok) {
                     const result = await response.json();
                     if (result.success) {
