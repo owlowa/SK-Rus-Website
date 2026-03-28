@@ -491,7 +491,8 @@
         }
 
         /* ===== ФУТЕР ===== */
-        .footer {
+/* ===== ФУТЕР ===== */
+.footer {
     background: #1b5e20;
     color: #e2e8e0;
     padding: 24px 0 12px;
@@ -517,6 +518,74 @@
 .footer-info a:hover {
     text-decoration: underline;
     color: var(--accent-light);
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.footer-nav a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-light);
+    text-decoration: underline;
+}
+/* Вертикальное меню в футере */
+.footer-nav-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer-nav-column a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.footer-nav-column a:hover {
+    color: var(--accent-light);
+    text-decoration: underline;
+}
+
+/* Адаптивная сетка преимуществ — 4 колонки на десктопе */
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+@media (min-width: 1024px) {
+    .advantages-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer-links p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 .footer-copyright {
@@ -566,24 +635,9 @@
     height: 24px;
     fill: var(--primary-dark);
 }
-/* Вертикальное меню в футере */
-.footer-nav-column ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.footer-nav-column a {
-    color: var(--primary-light);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-}
-.footer-nav-column a:hover {
-    color: var(--accent-light);
-    text-decoration: underline;
+
+hr {
+    display: none;
 }
 
 

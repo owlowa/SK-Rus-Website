@@ -367,6 +367,25 @@
     height: 24px;
     fill: var(--primary-dark);
 }
+/* Вертикальное меню в футере */
+.footer-nav-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer-nav-column a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.footer-nav-column a:hover {
+    color: var(--accent-light);
+    text-decoration: underline;
+}
 
 
         hr {

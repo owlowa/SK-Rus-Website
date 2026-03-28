@@ -453,12 +453,14 @@ h1, h2, h3, h4 {
     z-index: 2;
     color: white;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     text-align: center;
     padding: 6px 12px;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 30px;
     transition: background 0.2s;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .hero-btn:hover .hero-btn-text {
@@ -476,7 +478,7 @@ h1, h2, h3, h4 {
     background-image: url('photo/btn-doma.jpg');
 }
 .hero-btn-karkas {
-    background-image: url('photo/btn-karkas.jpg');
+    background-image: url('photo/btn-karkasnye-doma.jpg');
 }
 
 /* Адаптация для мобильных */
@@ -503,13 +505,13 @@ h1, h2, h3, h4 {
     }
         .hero-buttons {
         display: flex !important;
-        flex-direction: row !important;        /* явно задаём горизонтальное направление */
-        flex-wrap: wrap;            /* чтобы кнопки переносились на маленьких экранах */
-        justify-content: center;    /* выравнивание по центру */
+        flex-direction: row !important;       
+        flex-wrap: wrap;           
+        justify-content: center;    
         align-items: center;
         gap: 30px;
         margin-top: 30px;
-        width: 100%;                /* занимает всю ширину */
+        width: 100%;              
     }
 }
 
