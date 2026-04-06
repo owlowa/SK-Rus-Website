@@ -229,4 +229,90 @@
             }
         });
     }
+    // ========== ЧАТ ==========
+(function() {
+    const chatButton = document.getElementById('chatButton');
+    const chatWidget = document.getElementById('chatWidget');
+    const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatOverlay = document.getElementById('chatOverlay');
+    const chatForm = document.getElementById('chatForm');
+    const chatStatus = document.getElementById('chatStatus');
+
+    if (!chatButton || !chatWidget || !chatCloseBtn || !chatOverlay || !chatForm) return;
+
+    // Открыть чат
+    function openChat() {
+        chatWidget.hidden = false;
+        chatOverlay.hidden = false;
+        document.body.style.overflow = 'hidden'; // блокируем скролл
+        // Фокус на первое поле
+        const firstInput = chatForm.querySelector('input, textarea');
+        if (firstInput) firstInput.focus();
+    }
+
+    // Закрыть чат
+    function closeChat() {
+        chatWidget.hidden = true;
+        chatOverlay.hidden = true;
+        document.body.style.overflow = '';
+        chatStatus.innerHTML = ''; // очищаем статус
+        chatForm.reset();
+    }
+
+    chatButton.addEventListener('click', openChat);
+    chatCloseBtn.addEventListener('click', closeChat);
+    chatOverlay.addEventListener('click', closeChat); // клик по затемнению закрывает чат
+
+    // Отправка формы
+    chatForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name = this.name.value.trim();
+        const phone = this.phone.value.trim();
+        const message = this.message.value.trim();
+
+        if (!name || !phone || !message) {
+            chatStatus.innerHTML = 'Заполните все поля';
+            return;
+        }
+
+        // Простейшая валидация имени (буквы)
+        if (!/^[A-Za-zА-Яа-яЁё\s\-]+$/.test(name)) {
+            chatStatus.innerHTML = 'Имя должно содержать только буквы';
+            return;
+        }
+
+        // Валидация телефона (можно использовать ту же функцию, что и для модалки)
+        // Здесь для простоты – проверка на наличие цифр
+        if (!/\d/.test(phone)) {
+            chatStatus.innerHTML = 'Введите корректный номер телефона';
+            return;
+        }
+
+        chatStatus.innerHTML = 'Отправляем...';
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('message', message);
+        formData.append('source', 'chat'); // метка, что сообщение из чата
+
+        try {
+            const response = await fetch('send_chat.php', { method: 'POST', body: formData });
+            if (response.ok) {
+                const result = await response.json();
+                if (result.success) {
+                    chatStatus.innerHTML = '✅ Сообщение отправлено! Мы свяжемся с вами.';
+                    chatForm.reset();
+                    setTimeout(() => closeChat(), 2000);
+                } else {
+                    chatStatus.innerHTML = '❌ Ошибка при отправке. Попробуйте позже.';
+                }
+            } else {
+                chatStatus.innerHTML = '❌ Ошибка сервера.';
+            }
+        } catch (error) {
+            chatStatus.innerHTML = '❌ Ошибка соединения. Проверьте интернет.';
+        }
+    });
+})();
 })();

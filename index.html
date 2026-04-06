@@ -345,23 +345,31 @@
         </div>
     </div>
 
-    <!-- Кнопка чата -->
-    <div class="chat-button" id="chatButton" aria-label="Открыть чат">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
-        </svg>
+<div class="chat-button" id="chatButton" aria-label="Открыть чат">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white"/>
+    </svg>
+</div>
+
+<!-- Чат-виджет -->
+<div class="chat-widget" id="chatWidget" hidden>
+    <div class="chat-header">
+        <span>Напишите нам</span>
+        <button class="chat-close" id="chatCloseBtn">&times;</button>
     </div>
-    <div class="chat-widget" id="chatWidget" hidden>
-        <div class="chat-header">
-            <span>Чат с поддержкой</span>
-            <button class="chat-close" id="chatCloseBtn">&times;</button>
-        </div>
-        <div class="chat-body">
-            <p>Здравствуйте! Напишите свой вопрос, и мы ответим в ближайшее время.</p>
-            <textarea id="chatMessage" placeholder="Ваше сообщение..."></textarea>
-            <button id="chatSendBtn">Отправить</button>
-        </div>
+    <div class="chat-body">
+        <form id="chatForm">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="Номер телефона" required>
+            <textarea name="message" placeholder="Ваше сообщение..." rows="3" required></textarea>
+            <button type="submit" class="chat-submit">Отправить</button>
+        </form>
+        <div class="chat-status" id="chatStatus"></div>
     </div>
+</div>
+
+<!-- Затемняющий слой для чата (отдельный) -->
+<div class="chat-overlay" id="chatOverlay" hidden></div>
 
     <script src="js/common.js"></script>
     <script>
