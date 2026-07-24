@@ -294,14 +294,14 @@
         }
 
         .item-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-dark);
             background: var(--accent-bg);
-            padding: 4px 12px;
-            border-radius: 30px;
+            padding: 6px 20px;
+            border-radius: 40px;
             white-space: nowrap;
-            transition: opacity 0.2s;
+            transition: none;
         }
 
         .item-actions {
@@ -393,7 +393,7 @@
             border-top: 1px solid transparent;
         }
         .item-details.show {
-            max-height: 2000px;
+            max-height: 3000px;
             border-top-color: var(--accent-light);
         }
 
